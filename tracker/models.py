@@ -20,5 +20,5 @@ class Habit(models.Model):
     )
     period = models.DurationField(default=timedelta(days=1), verbose_name="Периодичность")
     reward = models.CharField(max_length=60, blank=True, null=True, verbose_name="Вознаграждение")
-    action_time = models.DurationField(default=timedelta(minutes=15), verbose_name="Время на выполнение")
+    duration = models.DurationField(default=timedelta(minutes=15), verbose_name="Время на выполнение")
     is_public = models.BooleanField(default=True, verbose_name="Признак публичности")
