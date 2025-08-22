@@ -4,8 +4,8 @@ from django.db import models
 
 class CustomUser(AbstractUser):
 
-    email = models.EmailField(verbose_name="Email", unique=True)
-    phone = models.IntegerField(verbose_name="Номер телефона", blank=True, null=True)
+    email = models.EmailField(verbose_name="Email", blank=True, null=True, unique=True)
+    phone = models.IntegerField(verbose_name="Номер телефона", blank=True, null=True, unique=True)
 
     class Meta:
         verbose_name = "Пользователь"
