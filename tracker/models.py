@@ -22,3 +22,10 @@ class Habit(models.Model):
     reward = models.CharField(max_length=60, blank=True, null=True, verbose_name="Вознаграждение")
     duration = models.DurationField(default=timedelta(minutes=15), verbose_name="Время на выполнение")
     is_public = models.BooleanField(default=True, verbose_name="Признак публичности")
+
+    class Meta:
+        verbose_name = "Привычка"
+        verbose_name_plural = "Привычки"
+
+    def __str__(self):
+        return self.action

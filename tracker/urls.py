@@ -11,6 +11,4 @@ app_name = TrackerConfig.name
 router = DefaultRouter()
 router.register(r"habits", views.HabitViewSet, basename="habits")
 
-urlpatterns = [
-
-] + router.urls
+urlpatterns = [] + router.urls
