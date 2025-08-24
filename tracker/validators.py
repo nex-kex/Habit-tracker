@@ -1,8 +1,6 @@
 from rest_framework.serializers import ValidationError
 from datetime import timedelta
 
-from tracker.models import Habit
-
 
 class HabitRewardValidator:
     def __call__(self, attrs):
@@ -44,4 +42,4 @@ class HabitPeriodValidator:
     def __call__(self, attrs):
         period = attrs.get("period")
         if period is not None and period > timedelta(days=7):
-                raise ValidationError("Нельзя выполнять привычку реже, чем 1 раз в 7 дней.")
+            raise ValidationError("Нельзя выполнять привычку реже, чем 1 раз в 7 дней.")
