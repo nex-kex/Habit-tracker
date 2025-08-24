@@ -11,9 +11,6 @@ from .validators import (
 
 
 class HabitSerializer(serializers.ModelSerializer):
-
-    user = serializers.HiddenField(default=serializers.CurrentUserDefault())
-
     class Meta:
         model = Habit
         validators = [
@@ -24,3 +21,9 @@ class HabitSerializer(serializers.ModelSerializer):
             HabitHasHabitRewardValidator(),
         ]
         fields = "__all__"
+        extra_kwargs = {
+            "is_enjoyable": {"required": True},
+            "period": {"required": True},
+            "duration": {"required": True},
+            "is_public": {"required": True},
+        }

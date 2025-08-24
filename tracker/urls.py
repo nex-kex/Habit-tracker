@@ -9,6 +9,8 @@ app_name = TrackerConfig.name
 
 
 router = DefaultRouter()
-router.register(r"habits", views.HabitViewSet, basename="habits")
+router.register("habits", views.HabitViewSet, basename="habits")
 
-urlpatterns = [] + router.urls
+urlpatterns = [
+    path("habits/public/", views.PublicHabitListView.as_view(), name="public-habits"),
+] + router.urls

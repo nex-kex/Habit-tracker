@@ -19,7 +19,7 @@ class HabitRewardValidator:
 class HabitDurationValidator:
     def __call__(self, attrs):
         duration = attrs.get("duration")
-        if duration > timedelta(seconds=120):
+        if duration is not None and duration > timedelta(seconds=120):
             raise ValidationError("Привычка должна занимать не более 2 минут.")
 
 
@@ -43,5 +43,5 @@ class RewardHabitValidator:
 class HabitPeriodValidator:
     def __call__(self, attrs):
         period = attrs.get("period")
-        if period > timedelta(days=7):
-            raise ValidationError("Нельзя выполнять привычку реже, чем 1 раз в 7 дней.")
+        if period is not None and period > timedelta(days=7):
+                raise ValidationError("Нельзя выполнять привычку реже, чем 1 раз в 7 дней.")

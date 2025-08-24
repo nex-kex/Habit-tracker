@@ -13,6 +13,9 @@ class HabitViewSet(viewsets.ModelViewSet):
     serializer_class = HabitSerializer
     pagination_class = MyPagination
 
+    def perform_create(self, serializer):
+        serializer.save(user=self.request.user)
+
     def get_permissions(self):
         if self.action in ["create", "list"]:
             self.permission_classes = [IsAuthenticated]
@@ -24,7 +27,7 @@ class HabitViewSet(viewsets.ModelViewSet):
         return Habit.objects.filter(user=self.request.user)
 
 
-class UserHabitListView(generics.ListAPIView):
+class PublicHabitListView(generics.ListAPIView):
     """Класс для отображения списка публичных привычек."""
 
     serializer_class = HabitSerializer

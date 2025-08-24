@@ -11,5 +11,10 @@ app_name = UsersConfig.name
 
 urlpatterns = [
     # token
-    path("token/", TokenObtainPairView.as_view(permission_classes=(AllowAny,)), name="token_obtain_pair"),
+    path("token/", TokenObtainPairView.as_view(permission_classes=(AllowAny,)), name="token"),
+    # users CRUD
+    path("create/", views.CustomUserCreateView.as_view(), name="user-create"),
+    path("<int:pk>/", views.CustomUserRetrieveView.as_view(), name="user-detail"),
+    path("<int:pk>/update/", views.CustomUserUpdateView.as_view(), name="user-update"),
+    path("<int:pk>/delete/", views.CustomUserDestroyView.as_view(), name="user-delete"),
 ]
