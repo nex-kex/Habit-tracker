@@ -1,10 +1,12 @@
-from rest_framework import viewsets, generics
+from rest_framework import generics, viewsets
 from rest_framework.permissions import IsAuthenticated
 
-from .serializers import HabitSerializer
+from users.permissions import IsAuthor
+
 from .models import Habit
 from .pagination import MyPagination
-from users.permissions import IsAuthor
+from .serializers import HabitSerializer
+from .tasks import send_tg_notification
 
 
 class HabitViewSet(viewsets.ModelViewSet):
@@ -15,6 +17,7 @@ class HabitViewSet(viewsets.ModelViewSet):
 
     def perform_create(self, serializer):
         serializer.save(user=self.request.user)
+        send_tg_notification.delay(self.request.user.id)
 
     def get_permissions(self):
         if self.action in ["create", "list"]:

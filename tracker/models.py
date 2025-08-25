@@ -1,6 +1,8 @@
-from django.db import models
-from users.models import CustomUser
 from datetime import timedelta
+
+from django.db import models
+
+from users.models import CustomUser
 
 
 class Habit(models.Model):

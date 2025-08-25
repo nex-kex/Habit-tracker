@@ -1,5 +1,6 @@
-from rest_framework.serializers import ValidationError
 from datetime import timedelta
+
+from rest_framework.serializers import ValidationError
 
 
 class HabitRewardValidator:

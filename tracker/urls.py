@@ -1,9 +1,9 @@
 from django.urls import path
 from rest_framework.routers import DefaultRouter
+
 from tracker.apps import TrackerConfig
 
 from . import views
-
 
 app_name = TrackerConfig.name
 
