@@ -17,7 +17,6 @@ class HabitViewSet(viewsets.ModelViewSet):
 
     def perform_create(self, serializer):
         serializer.save(user=self.request.user)
-        send_tg_notification.delay(self.request.user.id)
 
     def get_permissions(self):
         if self.action in ["create", "list"]:

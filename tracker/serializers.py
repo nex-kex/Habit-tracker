@@ -22,6 +22,7 @@ class HabitSerializer(serializers.ModelSerializer):
         ]
         fields = "__all__"
         extra_kwargs = {
+            "user": {"required": False},
             "is_enjoyable": {"required": True},
             "period": {"required": True},
             "duration": {"required": True},
