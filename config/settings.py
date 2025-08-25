@@ -1,6 +1,5 @@
 import os
-from datetime import timedelta, datetime
-from celery.schedules import crontab
+from datetime import datetime, timedelta
 from pathlib import Path
 
 from dotenv import load_dotenv
@@ -140,6 +139,6 @@ CELERY_BEAT_SCHEDULE = {
     "daily_notification": {
         "task": "tracker.tasks.send_tg_notification",
         "schedule": timedelta(days=1),
-        "options": {'start_time': datetime.now().replace(hour=20, minute=0)}
+        "options": {"start_time": datetime.now().replace(hour=20, minute=0)},
     }
 }

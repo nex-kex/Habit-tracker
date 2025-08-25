@@ -6,7 +6,6 @@ from users.permissions import IsAuthor
 from .models import Habit
 from .pagination import MyPagination
 from .serializers import HabitSerializer
-from .tasks import send_tg_notification
 
 
 class HabitViewSet(viewsets.ModelViewSet):
