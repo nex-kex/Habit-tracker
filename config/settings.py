@@ -1,5 +1,6 @@
 import os
-from datetime import datetime, timedelta
+from datetime import timedelta
+from celery.schedules import crontab
 from pathlib import Path
 
 from dotenv import load_dotenv
@@ -138,7 +139,6 @@ CELERY_TASK_TIME_LIMIT = 30 * 60
 CELERY_BEAT_SCHEDULE = {
     "daily_notification": {
         "task": "tracker.tasks.send_tg_notification",
-        "schedule": timedelta(days=1),
-        "options": {"start_time": datetime.now().replace(hour=20, minute=0)},
+        "schedule": crontab(hour=20, minute=0),
     }
 }
