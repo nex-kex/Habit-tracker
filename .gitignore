@@ -155,3 +155,8 @@ dmypy.json
 cython_debug/
 
 .idea/
+
+# Celery beat schedule files
+celerybeat-schedule
+celerybeat-schedule*
+*.celerybeat-schedule
