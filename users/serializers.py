@@ -11,6 +11,7 @@ class CustomUserCreateSerializer(serializers.ModelSerializer):
         extra_kwargs = {
             "email": {"required": False},
             "phone": {"required": False},
+            "password": {"write_only": True},
         }
 
     @staticmethod
@@ -22,4 +23,4 @@ class CustomUserCreateSerializer(serializers.ModelSerializer):
 class CustomUserSerializer(serializers.ModelSerializer):
     class Meta:
         model = CustomUser
-        fields = ["id", "username", "email", "phone"]
+        fields = ["id", "username", "email", "phone", "tg_chat_id"]

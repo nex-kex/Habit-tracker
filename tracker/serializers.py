@@ -16,7 +16,7 @@ class HabitSerializer(serializers.ModelSerializer):
             HabitRewardValidator(),
             HabitHasHabitRewardValidator(),
         ]
-        fields = "__all__"
+        exclude = ["user"]
         extra_kwargs = {
             "user": {"required": False},
             "is_enjoyable": {"required": True},
